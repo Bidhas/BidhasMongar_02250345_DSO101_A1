@@ -15,23 +15,23 @@ pipeline {
 
         stage('Install') {
             steps {
-                bat 'npm install'
+                bat 'cd todo-app\\backend && npm install'
             }
         }
 
         stage('Build') {
             steps {
-                bat 'npm run build'
+                bat 'cd todo-app\\backend && npm run build'
             }
         }
 
         stage('Test') {
             steps {
-                bat 'npm test'
+                bat 'cd todo-app\\backend && npm test'
             }
             post {
                 always {
-                    junit 'junit.xml'
+                    junit 'todo-app/backend/junit.xml'
                 }
             }
         }
@@ -39,7 +39,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    docker.build('bidhasmonga/todo-app:latest')
+                    docker.build('bidhasmonga/todo-app:latest', 'todo-app/backend')
                     docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-creds') {
                         docker.image('bidhasmonga/todo-app:latest').push()
                     }
