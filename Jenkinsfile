@@ -38,13 +38,13 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                script {
-                    docker.build('bidhasmonga/todo-app:latest', 'todo-app/backend')
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-creds') {
-                        docker.image('bidhasmonga/todo-app:latest').push()
-                    }
+                bat '"C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe" build -t "bidhasmonga/todo-app:latest" todo-app/backend'
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    bat '"C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe" login -u "%DOCKER_USER%" -p "%DOCKER_PASS%"'
+                    bat '"C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe" push "bidhasmonga/todo-app:latest"'
                 }
             }
         }
+
     }
 }
