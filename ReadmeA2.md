@@ -78,4 +78,4 @@ GitHub: https://github.com/Bidhas/BidhasMongar_02250345_DSO101_A1
 Docker Hub: https://hub.docker.com/r/bidhasmonga/todo-app
 
 ## Results and Some of the steps Screenchots
-![alt text](A3_2.png) ![alt text](A3_1.png)![alt text](<Screenshot 2026-05-12 221549.png>) ![alt text](<Screenshot 2026-05-12 221419.png>)
+![alt text]![alt text](image.png) ![alt text](A3_1.png)![alt text](<Screenshot 2026-05-12 221549.png>) ![alt text](<Screenshot 2026-05-12 221419.png>)
